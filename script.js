@@ -1,7 +1,5 @@
-const desktop = document.querySelector("[data-desktop]");
 const startButton = document.querySelector("[data-start-button]");
 const startMenu = document.querySelector("[data-start-menu]");
-const mobileIconLayoutQuery = window.matchMedia("(max-width: 720px)");
 
 function getWindowById(id) {
   return document.getElementById(id);
@@ -207,108 +205,18 @@ document.querySelectorAll(".y2k-button, .back-button, .desktop-icon, .start-butt
   });
 });
 
-function makeDesktopIconDraggable(icon) {
-  let pointerId = null;
-  let startX = 0;
-  let startY = 0;
-  let originX = 0;
-  let originY = 0;
-  let dragging = false;
-
-  icon.addEventListener("pointerdown", (event) => {
-    if (mobileIconLayoutQuery.matches) {
-      return;
-    }
-
-    pointerId = event.pointerId;
-    startX = event.clientX;
-    startY = event.clientY;
-
-    const rect = icon.getBoundingClientRect();
-    originX = rect.left + window.scrollX;
-    originY = rect.top + window.scrollY;
-
+document.querySelectorAll(".desktop-icon").forEach((icon) => {
+  icon.addEventListener("click", () => {
     document.querySelectorAll(".desktop-icon.is-selected").forEach((selectedIcon) => {
       selectedIcon.classList.remove("is-selected");
     });
-    icon.classList.add("is-selected");
-    icon.setPointerCapture(pointerId);
-  });
-
-  icon.addEventListener("pointermove", (event) => {
-    if (pointerId !== event.pointerId || !desktop) {
-      return;
-    }
-
-    const deltaX = event.clientX - startX;
-    const deltaY = event.clientY - startY;
-
-    if (!dragging && Math.hypot(deltaX, deltaY) < 6) {
-      return;
-    }
-
-    dragging = true;
-    icon.classList.add("is-dragging");
-    icon.style.position = "fixed";
-    icon.style.left = `${Math.max(4, Math.min(window.innerWidth - icon.offsetWidth - 4, originX + deltaX))}px`;
-    icon.style.top = `${Math.max(4, Math.min(window.innerHeight - icon.offsetHeight - 42, originY + deltaY))}px`;
-  });
-
-  icon.addEventListener("pointerup", (event) => {
-    if (pointerId !== event.pointerId) {
-      return;
-    }
-
-    icon.releasePointerCapture(pointerId);
-    icon.classList.remove("is-dragging", "is-clicking");
-
-    if (dragging) {
-      event.preventDefault();
-      icon.dataset.wasDragged = "true";
-      window.setTimeout(() => {
-        delete icon.dataset.wasDragged;
-      }, 0);
-    }
-
-    pointerId = null;
-    dragging = false;
-  });
-
-  icon.addEventListener("click", (event) => {
-    if (icon.dataset.wasDragged === "true") {
-      event.preventDefault();
-      return;
-    }
-
     icon.classList.add("is-selected");
   });
 
   icon.addEventListener("dragstart", (event) => {
     event.preventDefault();
   });
-}
-
-document.querySelectorAll("[data-draggable]").forEach(makeDesktopIconDraggable);
-
-function clearDesktopIconPositions() {
-  if (!mobileIconLayoutQuery.matches) {
-    return;
-  }
-
-  document.querySelectorAll("[data-draggable]").forEach((icon) => {
-    icon.style.removeProperty("position");
-    icon.style.removeProperty("left");
-    icon.style.removeProperty("top");
-  });
-}
-
-clearDesktopIconPositions();
-
-if (typeof mobileIconLayoutQuery.addEventListener === "function") {
-  mobileIconLayoutQuery.addEventListener("change", clearDesktopIconPositions);
-} else {
-  mobileIconLayoutQuery.addListener(clearDesktopIconPositions);
-}
+});
 
 function updateClock() {
   const clock = document.querySelector("[data-clock]");

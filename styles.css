@@ -126,10 +126,6 @@ img {
   outline: none;
 }
 
-.desktop-icon.is-dragging {
-  z-index: 40;
-  opacity: 0.94;
-}
 
 .xp-window {
   position: relative;
