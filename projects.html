@@ -4,43 +4,73 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects :: Diogo Mota</title>
+  <link rel="icon" type="image/png" href="assets/xp/Windows_logo.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <div class="cosmic-backdrop" aria-hidden="true">
-    <div class="grid-plane"></div>
-    <div class="starfield" data-starfield></div>
+  <div class="desktop-shell" data-desktop>
+    <nav class="desktop-icons" aria-label="Desktop shortcuts">
+      <a class="desktop-icon" href="index.html" data-draggable><img src="assets/xp/my_computer.png" alt="" aria-hidden="true"><span>My Computer</span></a>
+      <a class="desktop-icon" href="posts.html" data-draggable><img src="assets/xp/textdoc.png" alt="" aria-hidden="true"><span>Posts</span></a>
+      <button class="desktop-icon" type="button" data-open-window="page-window" data-draggable><img src="assets/xp/editor.png" alt="" aria-hidden="true"><span>Projects</span></button>
+      <a class="desktop-icon" href="recommendations.html" data-draggable><img src="assets/xp/mywebsite.png" alt="" aria-hidden="true"><span>Recommendations</span></a>
+      <button class="desktop-icon" type="button" data-open-window="page-window" data-draggable><img src="assets/xp/my_network_places.png" alt="" aria-hidden="true"><span>My Network Places</span></button>
+      <button class="desktop-icon" type="button" data-close-window="page-window" data-draggable><img src="assets/xp/recycle_bin.png" alt="" aria-hidden="true"><span>Recycle Bin</span></button>
+    </nav>
+
+    <main class="xp-window y2k-window page-window" id="page-window" data-window data-task-title="Projects" aria-label="Projects page">
+      <header class="title-bar">
+        <div class="title-copy"><img class="title-icon-img" src="assets/xp/editor.png" alt="" aria-hidden="true"><span>Diogo Mota :: Projects</span></div>
+        <div class="window-controls">
+          <button class="window-button minimize" type="button" data-window-action="minimize" aria-label="Minimize window"></button>
+          <button class="window-button maximize" type="button" data-window-action="maximize" aria-label="Maximize window"></button>
+          <button class="window-button close" type="button" data-window-action="close" aria-label="Close window"></button>
+        </div>
+      </header>
+      <section class="simple-page-panel window-body">
+        <span class="orbit-line page-orbit" aria-hidden="true"></span>
+        <h1 class="page-title">Projects</h1>
+        <a class="back-button" href="index.html">Back to Home</a>
+      </section>
+    </main>
+
+    <footer class="taskbar" aria-label="Windows XP taskbar">
+      <div class="start-menu" id="start-menu" data-start-menu role="menu" aria-hidden="true">
+        <header class="start-menu-header"><span class="user-pic"><img src="assets/diogo.jpg" alt="" aria-hidden="true"></span><span class="user-name">Diogo Mota</span></header>
+        <div class="start-menu-applications">
+          <section class="start-menu-column menu-left" aria-label="Pinned programs">
+            <a class="start-item featured" href="index.html"><img src="assets/xp/exploraricone.png" alt="" aria-hidden="true"><span><strong>Internet</strong><small>Diogo Mota Homepage</small></span></a>
+            <button class="start-item featured" type="button" data-open-window="page-window"><img src="assets/xp/editor.png" alt="" aria-hidden="true"><span><strong>Projects</strong><small>Current work</small></span></button>
+            <div class="start-divider"></div>
+            <a class="start-item" href="posts.html"><img src="assets/xp/textdoc.png" alt="" aria-hidden="true"><span>Posts</span></a>
+            <a class="start-item" href="recommendations.html"><img src="assets/xp/mywebsite.png" alt="" aria-hidden="true"><span>Recommendations</span></a>
+            <button class="start-item all-programs" type="button" data-open-window="page-window"><span>All Programs</span><img src="assets/xp/programs_arrow.png" alt="" aria-hidden="true"></button>
+          </section>
+          <section class="start-menu-column menu-right" aria-label="Places">
+            <a class="start-item" href="index.html"><img src="assets/xp/my_computer.png" alt="" aria-hidden="true"><span>My Computer</span></a>
+            <button class="start-item" type="button" data-open-window="page-window"><img src="assets/xp/myrecent.png" alt="" aria-hidden="true"><span>My Recent Documents</span></button>
+            <button class="start-item" type="button" data-open-window="page-window"><img src="assets/xp/my_network_places.png" alt="" aria-hidden="true"><span>My Network Places</span></button>
+            <div class="start-divider"></div>
+            <button class="start-item" type="button" data-open-window="page-window"><img src="assets/xp/controlpanel.png" alt="" aria-hidden="true"><span>Control Panel</span></button>
+            <button class="start-item" type="button" data-open-window="page-window"><img src="assets/xp/search.png" alt="" aria-hidden="true"><span>Search</span></button>
+            <button class="start-item" type="button" data-open-window="page-window"><img src="assets/xp/run.png" alt="" aria-hidden="true"><span>Run...</span></button>
+          </section>
+        </div>
+        <footer class="start-menu-bottom">
+          <button type="button" data-close-window="page-window"><img src="assets/xp/log-off-icon-8379-Windows.ico" alt="" aria-hidden="true">Log Off</button>
+          <button type="button" data-close-window="page-window"><img src="assets/xp/Shutdown_Box_Red.png" alt="" aria-hidden="true">Shut Down</button>
+        </footer>
+      </div>
+      <button class="start-button" type="button" data-start-button aria-controls="start-menu" aria-expanded="false"><img src="assets/xp/Windows_logo.png" alt="" aria-hidden="true"><span>start</span></button>
+      <ul class="quick-launch" aria-label="Quick launch">
+        <li><a href="index.html"><img src="assets/xp/exploraricone.png" alt="Homepage"></a></li>
+        <li><a href="posts.html"><img src="assets/xp/textdoc.png" alt="Posts"></a></li>
+        <li><a href="recommendations.html"><img src="assets/xp/mywebsite.png" alt="Recommendations"></a></li>
+      </ul>
+      <button class="task-button is-active" type="button" data-restore-window="page-window"><img src="assets/xp/editor.png" alt="" aria-hidden="true"><span>Projects</span></button>
+      <div class="system-tray"><img src="assets/xp/msn16.png" alt="" aria-hidden="true"><img src="assets/xp/my_network_places.png" alt="" aria-hidden="true"><span data-clock>--:--</span></div>
+    </footer>
   </div>
-
-  <main class="y2k-window page-window" aria-label="Projects page">
-    <header class="title-bar">
-      <div class="title-copy">
-        <span class="title-star" aria-hidden="true">&#9733;</span>
-        <span>Diogo Mota :: Projects</span>
-        <span class="title-star" aria-hidden="true">&#9733;</span>
-      </div>
-      <div class="window-controls" aria-hidden="true">
-        <span class="window-button minimize"></span>
-        <span class="window-button maximize"></span>
-        <span class="window-button close"></span>
-      </div>
-    </header>
-
-    <section class="simple-page-panel">
-      <span class="orbit-line page-orbit" aria-hidden="true"></span>
-      <h1 class="page-title">Projects</h1>
-      <a class="back-button" href="index.html">
-        <span class="button-arrow reverse" aria-hidden="true"></span>
-        <span>Back to Home</span>
-      </a>
-      <div class="globe-badge" aria-hidden="true">
-        <span class="wing left-wing"></span>
-        <span class="globe"></span>
-        <span class="wing right-wing"></span>
-      </div>
-    </section>
-  </main>
-
   <script src="script.js"></script>
 </body>
 </html>
